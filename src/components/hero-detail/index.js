@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const HeroDetail = ({ hero, updateHero }) => (
   <div>
@@ -15,5 +16,10 @@ const HeroDetail = ({ hero, updateHero }) => (
     </div>
   </div>
 );
+
+HeroDetail.propTypes = {
+  hero: PropTypes.object.isRequired,
+  updateHero: PropTypes.func.isRequired
+};
 
 export default HeroDetail;
