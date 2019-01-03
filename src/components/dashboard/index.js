@@ -1,6 +1,6 @@
 import React from 'react';
 import HEROES from '../../heroes';
-import './styles.css';
+// import './styles.css';
 
 class Dashboard extends React.Component {
   constructor(props) {

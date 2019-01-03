@@ -1,7 +1,7 @@
 import React from 'react';
 import HEROES from '../../heroes';
 import HeroDetail from '../hero-detail';
-import './styles.css';
+import { HeroList, HeroListItem, Badge } from './styles';
 
 class Heroes extends React.Component {
   constructor(props) {
@@ -30,17 +30,17 @@ class Heroes extends React.Component {
     return (
       <>
         <h2>My Heroes</h2>
-        <ul className="heroes">
+        <HeroList>
           {heroes.map(hero => (
-            <li
+            <HeroListItem
               key={hero.id}
               onClick={() => this.selectHero(hero)}
-              className={hero === selectedHero ? 'selected' : null}
+              selected={hero === selectedHero}
             >
-              <span className="badge">{hero.id}</span> {hero.name}
-            </li>
+              <Badge>{hero.id}</Badge> {hero.name}
+            </HeroListItem>
           ))}
-        </ul>
+        </HeroList>
         {selectedHero && (
           <HeroDetail hero={selectedHero} updateHero={this.updateHero} />
         )}
