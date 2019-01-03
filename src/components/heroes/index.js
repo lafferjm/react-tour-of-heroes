@@ -1,5 +1,6 @@
 import React from 'react';
 import HEROES from '../../heroes';
+import HeroDetail from '../hero-detail';
 import './styles.css';
 
 class Heroes extends React.Component {
@@ -43,21 +44,11 @@ class Heroes extends React.Component {
           }
         </ul>
         {
-          selectedHero && (
-            <div>
-              <h2>{selectedHero.name.toUpperCase()} Details</h2>
-              <div><span>id: </span>{selectedHero.id}</div>
-              <div>
-                <label>name:
-                  <input
-                    value={selectedHero.name}
-                    placeholder='name'
-                    onChange={this.updateHero}
-                  />
-                </label>
-              </div>
-            </div>
-          )
+          selectedHero &&
+            <HeroDetail
+              hero={selectedHero}
+              updateHero={this.updateHero}
+            />
         }
       </>
     )
