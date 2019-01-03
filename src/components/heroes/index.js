@@ -30,14 +30,14 @@ class Heroes extends React.Component {
     return (
       <>
         <h2>My Heroes</h2>
-        <ul class="heroes">
+        <ul className="heroes">
           {heroes.map(hero => (
             <li
               key={hero.id}
               onClick={() => this.selectHero(hero)}
               className={hero === selectedHero ? 'selected' : null}
             >
-              <span class="badge">{hero.id}</span> {hero.name}
+              <span className="badge">{hero.id}</span> {hero.name}
             </li>
           ))}
         </ul>
