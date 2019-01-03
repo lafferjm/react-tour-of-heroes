@@ -17,13 +17,13 @@ class Heroes extends React.Component {
     const { selectedHero } = this.state;
     selectedHero.name = event.target.value;
     this.setState({ selectedHero });
-  }
+  };
 
   selectHero = hero => {
     this.setState({
       selectedHero: hero
     });
-  }
+  };
 
   render() {
     const { heroes, selectedHero } = this.state;
@@ -31,28 +31,22 @@ class Heroes extends React.Component {
       <>
         <h2>My Heroes</h2>
         <ul class="heroes">
-          {
-            heroes.map(hero => (
-              <li
-                key={hero.id}
-                onClick={() => this.selectHero(hero)}
-                className={hero === selectedHero ? 'selected' : null}
-              >
-                <span class="badge">{hero.id}</span> {hero.name}
-              </li>
-            ))
-          }
+          {heroes.map(hero => (
+            <li
+              key={hero.id}
+              onClick={() => this.selectHero(hero)}
+              className={hero === selectedHero ? 'selected' : null}
+            >
+              <span class="badge">{hero.id}</span> {hero.name}
+            </li>
+          ))}
         </ul>
-        {
-          selectedHero &&
-            <HeroDetail
-              hero={selectedHero}
-              updateHero={this.updateHero}
-            />
-        }
+        {selectedHero && (
+          <HeroDetail hero={selectedHero} updateHero={this.updateHero} />
+        )}
       </>
-    )
+    );
   }
-};
+}
 
 export default Heroes;
