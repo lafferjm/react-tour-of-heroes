@@ -10,17 +10,18 @@ const HeroList = styled.ul`
 const HeroListItem = styled.li`
   position: relative;
   cursor: pointer;
-  background-color: ${props => props.selected ? '#cfd8dc !important': '#eee'};
-  margin: .5em;
-  padding: .3em 0;
+  background-color: ${props =>
+    props.selected ? '#cfd8dc !important' : '#eee'};
+  margin: 0.5em;
+  padding: 0.3em 0;
   height: 1.6em;
   border-radius: 4px;
-  color: ${ props => props.selected ? 'white' : null};
-  
+  color: ${props => (props.selected ? 'white' : null)};
+
   :hover {
     color: #607d8b;
     background-color: #ddd;
-    left: .1em;
+    left: 0.1em;
   }
 `;
 
@@ -37,7 +38,7 @@ const Badge = styled.span`
   height: 1.8em;
   min-with: 16px;
   text-align: right;
-  margin-right: .8em;
+  margin-right: 0.8em;
   border-radius: 4px 0 0 4px;
 `;
 

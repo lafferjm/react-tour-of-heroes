@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Route, Link } from 'react-router-dom'
+import { Route, Link } from 'react-router-dom';
 
 import Heroes from './components/heroes';
 import Dashboard from './components/dashboard';

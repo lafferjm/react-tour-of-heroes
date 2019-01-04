@@ -1,6 +1,14 @@
 import React from 'react';
+import {
+  HeaderThree,
+  HeaderFour,
+  HeroModule,
+  Grid,
+  GridItem,
+  Container
+} from './styles';
+
 import HEROES from '../../heroes';
-// import './styles.css';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -15,21 +23,19 @@ class Dashboard extends React.Component {
     const { heroes } = this.state;
 
     return (
-      <>
-        <h3>Top Heroes</h3>
-        <div className="grid grid-pad">
-          {
-            heroes.slice(1, 5).map(hero => (
-              <a className="col-1-4" key={hero.id}>
-                <div className="module hero">
-                  <h4>{ hero.name }</h4>
-                </div>
-              </a>
-            ))
-          }
-        </div>
-      </>
-    )
+      <Container>
+        <HeaderThree>Top Heroes</HeaderThree>
+        <Grid>
+          {heroes.slice(1, 5).map(hero => (
+            <GridItem key={hero.id}>
+              <HeroModule>
+                <HeaderFour>{hero.name}</HeaderFour>
+              </HeroModule>
+            </GridItem>
+          ))}
+        </Grid>
+      </Container>
+    );
   }
 }
 
