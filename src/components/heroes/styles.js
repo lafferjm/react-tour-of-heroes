@@ -51,7 +51,7 @@ const HeroLink = styled(Link)`
   width: 250px;
 
   :hover {
-    color: #607d8b
+    color: #607d8b;
   }
 `;
 
