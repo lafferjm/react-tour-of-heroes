@@ -1,6 +1,4 @@
 import React from 'react';
-import HEROES from '../../heroes';
-import HeroDetail from '../hero-detail';
 import { HeroList, HeroListItem, Badge } from './styles';
 
 class Heroes extends React.Component {
@@ -8,9 +6,16 @@ class Heroes extends React.Component {
     super(props);
 
     this.state = {
-      heroes: HEROES,
-      selectedHero: null
+      heroes: []
     };
+  }
+
+  async componentDidMount() {
+    const res = await fetch('http://localhost:3000/heroes');
+    const response = await res.json();
+    this.setState({
+      heroes: response
+    });
   }
 
   updateHero = event => {
@@ -26,24 +31,17 @@ class Heroes extends React.Component {
   };
 
   render() {
-    const { heroes, selectedHero } = this.state;
+    const { heroes } = this.state;
     return (
       <>
         <h2>My Heroes</h2>
         <HeroList>
           {heroes.map(hero => (
-            <HeroListItem
-              key={hero.id}
-              onClick={() => this.selectHero(hero)}
-              selected={hero === selectedHero}
-            >
+            <HeroListItem key={hero.id}>
               <Badge>{hero.id}</Badge> {hero.name}
             </HeroListItem>
           ))}
         </HeroList>
-        {selectedHero && (
-          <HeroDetail hero={selectedHero} updateHero={this.updateHero} />
-        )}
       </>
     );
   }

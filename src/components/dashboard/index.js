@@ -8,15 +8,20 @@ import {
   Container
 } from './styles';
 
-import HEROES from '../../heroes';
-
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      heroes: HEROES
+      heroes: []
     };
+  }
+
+  async componentDidMount() {
+    const res = await fetch('http://localhost:3000/heroes');
+    const response = await res.json();
+
+    this.setState({ heroes: response });
   }
 
   render() {

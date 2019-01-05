@@ -4,6 +4,7 @@ import { Route, Link } from 'react-router-dom';
 
 import Heroes from './components/heroes';
 import Dashboard from './components/dashboard';
+import HeroDetail from './components/hero-detail';
 
 const App = () => (
   <>
@@ -14,6 +15,7 @@ const App = () => (
     </nav>
     <Route path="/heroes" component={Heroes} />
     <Route path="/dashboard" component={Dashboard} />
+    <Route path="/detail/:id" component={HeroDetail} />
   </>
 );
 
