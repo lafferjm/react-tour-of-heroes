@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { StyledInput, StyledLabel, StyledButton } from './styles';
 
 class HeroDetail extends React.Component {
   constructor(props) {
@@ -20,6 +21,10 @@ class HeroDetail extends React.Component {
     });
   }
 
+  goBack = () => {
+    this.props.history.goBack();
+  };
+
   render() {
     const { hero } = this.state;
 
@@ -33,13 +38,14 @@ class HeroDetail extends React.Component {
               {hero.id}
             </div>
             <div>
-              <label>
+              <StyledLabel>
                 name:
-                <input value={hero.name} placeholder="name" />
-              </label>
+                <StyledInput value={hero.name} placeholder="name" />
+              </StyledLabel>
             </div>
           </>
         )}
+        <StyledButton onClick={this.goBack}>go back</StyledButton>
       </div>
     );
   }
