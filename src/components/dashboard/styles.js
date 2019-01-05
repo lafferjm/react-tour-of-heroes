@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const HeaderThree = styled.h3`
   text-align: cetner;
@@ -47,7 +48,7 @@ const Grid = styled.div`
   }
 `;
 
-const GridItem = styled.a`
+const GridItem = styled(Link)`
   text-decoration: none;
   width: 25%;
   float: left;

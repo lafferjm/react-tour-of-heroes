@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const HeroList = styled.ul`
   margin: 0 0 2em 0;
@@ -42,4 +43,16 @@ const Badge = styled.span`
   border-radius: 4px 0 0 4px;
 `;
 
-export { HeroList, HeroListItem, Badge };
+const HeroLink = styled(Link)`
+  color: #888;
+  text-decoration: none;
+  position: relative;
+  display: block;
+  width: 250px;
+
+  :hover {
+    color: #607d8b
+  }
+`;
+
+export { HeroList, HeroListItem, Badge, HeroLink };

@@ -32,7 +32,7 @@ class Dashboard extends React.Component {
         <HeaderThree>Top Heroes</HeaderThree>
         <Grid>
           {heroes.slice(1, 5).map(hero => (
-            <GridItem key={hero.id}>
+            <GridItem key={hero.id} to={`/detail/${hero.id}`}>
               <HeroModule>
                 <HeaderFour>{hero.name}</HeaderFour>
               </HeroModule>

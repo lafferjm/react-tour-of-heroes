@@ -1,5 +1,5 @@
 import React from 'react';
-import { HeroList, HeroListItem, Badge } from './styles';
+import { HeroList, HeroListItem, Badge, HeroLink } from './styles';
 
 class Heroes extends React.Component {
   constructor(props) {
@@ -38,7 +38,9 @@ class Heroes extends React.Component {
         <HeroList>
           {heroes.map(hero => (
             <HeroListItem key={hero.id}>
-              <Badge>{hero.id}</Badge> {hero.name}
+              <HeroLink to={`/detail/${hero.id}`}>
+                <Badge>{hero.id}</Badge> {hero.name}
+              </HeroLink>
             </HeroListItem>
           ))}
         </HeroList>
