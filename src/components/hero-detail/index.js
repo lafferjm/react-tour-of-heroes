@@ -25,6 +25,13 @@ class HeroDetail extends React.Component {
     this.props.history.goBack();
   };
 
+  updateHero = event => {
+    const { hero } = this.state;
+
+    hero.name = event.target.value;
+    this.setState({ hero });
+  };
+
   render() {
     const { hero } = this.state;
 
@@ -40,7 +47,11 @@ class HeroDetail extends React.Component {
             <div>
               <StyledLabel>
                 name:
-                <StyledInput value={hero.name} placeholder="name" />
+                <StyledInput
+                  value={hero.name}
+                  placeholder="name"
+                  onChange={this.updateHero}
+                />
               </StyledLabel>
             </div>
           </>
