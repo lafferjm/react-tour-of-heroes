@@ -18,7 +18,7 @@
     "eject": "react-scripts eject",
     "prettier": "prettier **/*.js --config .prettierrc",
     "prettier:fix": "prettier **/*.js --config .prettierrc --write",
-    "mocks": "json-server --watch db.json"
+    "mocks": "json-server --watch db.js"
   },
   "eslintConfig": {
     "extends": "react-app"
