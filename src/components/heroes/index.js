@@ -1,5 +1,11 @@
 import React from 'react';
-import { HeroList, HeroListItem, Badge, HeroLink } from './styles';
+import {
+  HeroList,
+  HeroListItem,
+  Badge,
+  HeroLink,
+  StyledButton
+} from './styles';
 
 class Heroes extends React.Component {
   constructor(props) {
@@ -59,6 +65,19 @@ class Heroes extends React.Component {
     });
   };
 
+  deleteHero = async id => {
+    const { heroes } = this.state;
+
+    await fetch(`http://localhost:3000/heroes/${id}`, {
+      method: 'DELETE'
+    });
+
+    const heroList = heroes.filter(hero => hero.id !== id);
+    this.setState({
+      heroes: heroList
+    });
+  };
+
   render() {
     const { heroes, newHero } = this.state;
     return (
@@ -77,6 +96,12 @@ class Heroes extends React.Component {
               <HeroLink to={`/detail/${hero.id}`}>
                 <Badge>{hero.id}</Badge> {hero.name}
               </HeroLink>
+              <StyledButton
+                title="delete hero"
+                onClick={() => this.deleteHero(hero.id)}
+              >
+                x
+              </StyledButton>
             </HeroListItem>
           ))}
         </HeroList>

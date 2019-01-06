@@ -55,4 +55,22 @@ const HeroLink = styled(Link)`
   }
 `;
 
-export { HeroList, HeroListItem, Badge, HeroLink };
+const StyledButton = styled.button`
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  cursor: hand;
+  font-family: Arial;
+  position: relative;
+  left: 194px;
+  top: -32px;
+  background-color: gray !important;
+  color: white;
+
+  :hover {
+    background-color: #cfd8dc;
+  }
+`;
+
+export { HeroList, HeroListItem, Badge, HeroLink, StyledButton };
