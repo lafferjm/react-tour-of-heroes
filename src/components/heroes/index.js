@@ -6,7 +6,10 @@ class Heroes extends React.Component {
     super(props);
 
     this.state = {
-      heroes: []
+      heroes: [],
+      newHero: {
+        name: ''
+      }
     };
   }
 
@@ -30,11 +33,44 @@ class Heroes extends React.Component {
     });
   };
 
+  addHero = async () => {
+    const { newHero, heroes } = this.state;
+    const res = await fetch('http://localhost:3000/heroes', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newHero)
+    });
+    const response = await res.json();
+    heroes.push(response);
+
+    this.setState({
+      heroes,
+      newHero: {
+        name: ''
+      }
+    });
+  };
+
+  updateHeroName = event => {
+    this.setState({
+      newHero: {
+        name: event.target.value
+      }
+    });
+  };
+
   render() {
-    const { heroes } = this.state;
+    const { heroes, newHero } = this.state;
     return (
       <>
         <h2>My Heroes</h2>
+        <div>
+          <label>
+            Hero name:
+            <input value={newHero.name} onChange={this.updateHeroName} />
+          </label>
+          <button onClick={this.addHero}>add</button>
+        </div>
         <HeroList>
           {heroes.map(hero => (
             <HeroListItem key={hero.id}>
