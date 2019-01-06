@@ -32,6 +32,17 @@ class HeroDetail extends React.Component {
     this.setState({ hero });
   };
 
+  save = async () => {
+    const { hero } = this.state;
+    await fetch(`http://localhost:3000/heroes/${hero.id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(hero)
+    });
+
+    this.props.history.goBack();
+  };
+
   render() {
     const { hero } = this.state;
 
@@ -57,13 +68,15 @@ class HeroDetail extends React.Component {
           </>
         )}
         <StyledButton onClick={this.goBack}>go back</StyledButton>
+        <StyledButton onClick={this.save}>save</StyledButton>
       </div>
     );
   }
 }
 
 HeroDetail.propTypes = {
-  match: PropTypes.object.isRequired
+  match: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
 };
 
 export default HeroDetail;
