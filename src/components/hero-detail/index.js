@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { addMessage } from '../../state/actions';
 import PropTypes from 'prop-types';
 import { StyledInput, StyledLabel, StyledButton } from './styles';
 
@@ -19,6 +21,7 @@ class HeroDetail extends React.Component {
     this.setState({
       hero: response
     });
+    this.props.addMessage(`HeroService: fetched hero with id ${id}`);
   }
 
   goBack = () => {
@@ -39,7 +42,7 @@ class HeroDetail extends React.Component {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(hero)
     });
-
+    this.props.addMessage(`HeroService: updated hero with id ${hero.id}`);
     this.props.history.goBack();
   };
 
@@ -74,9 +77,13 @@ class HeroDetail extends React.Component {
   }
 }
 
+const mapDispatchToProps = {
+  addMessage
+};
+
 HeroDetail.propTypes = {
   match: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired
 };
 
-export default HeroDetail;
+export default connect(null, mapDispatchToProps)(HeroDetail);

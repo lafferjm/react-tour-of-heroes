@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { addMessage } from '../../state/actions';
 import {
   HeroList,
   HeroListItem,
@@ -25,6 +27,7 @@ class Heroes extends React.Component {
     this.setState({
       heroes: response
     });
+    this.props.addMessage('HeroService: fetched heroes');
   }
 
   updateHero = event => {
@@ -55,6 +58,7 @@ class Heroes extends React.Component {
         name: ''
       }
     });
+    this.props.addMessage('HeroService: added hero');
   };
 
   updateHeroName = event => {
@@ -76,6 +80,8 @@ class Heroes extends React.Component {
     this.setState({
       heroes: heroList
     });
+
+    this.props.addMessage(`HeroService: deleted hero with id ${id}`);
   };
 
   render() {
@@ -110,4 +116,8 @@ class Heroes extends React.Component {
   }
 }
 
-export default Heroes;
+const mapDispatchToProps = {
+  addMessage
+};
+
+export default connect(null, mapDispatchToProps)(Heroes);

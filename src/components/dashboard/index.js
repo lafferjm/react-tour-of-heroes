@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { addMessage } from '../../state/actions';
 import {
   HeaderThree,
   HeaderFour,
@@ -22,6 +24,7 @@ class Dashboard extends React.Component {
     const response = await res.json();
 
     this.setState({ heroes: response });
+    this.props.addMessage('HeroService: fetched heroes');
   }
 
   render() {
@@ -44,4 +47,8 @@ class Dashboard extends React.Component {
   }
 }
 
-export default Dashboard;
+const mapDispatchToProps = {
+  addMessage
+};
+
+export default connect(null, mapDispatchToProps)(Dashboard);

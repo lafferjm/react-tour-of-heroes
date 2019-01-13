@@ -17,7 +17,7 @@ const Messages = ({ messages, clearMessages }) => (
 
 const mapStateToProps = state => {
   return {
-    messages: state.messages.messages
+    messages: state.messages
   };
 };
 
